@@ -8,10 +8,10 @@ HOLATI = [
 
 
 class Reja(models.Model):
-    task = models.CharField(max_length=50)
+    name = models.CharField(max_length=50)
     date = models.DateField(blank=True)
-    detail = models.TextField()
-    holat = models.CharField(max_length=20, choices=HOLATI)
+    details = models.TextField()
+    status = models.CharField(max_length=20, choices=HOLATI)
 
     def __str__(self):
         return self.task
