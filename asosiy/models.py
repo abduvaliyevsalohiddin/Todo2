@@ -11,7 +11,7 @@ from django.contrib.auth.models import User
 
 class Reja(models.Model):
     name = models.CharField(max_length=50)
-    date = models.DateField(blank=True)
+    date = models.DateField(blank=True, null=True)
     details = models.TextField()
     status = models.CharField(max_length=20)
     egasi = models.ForeignKey(User, on_delete=models.CASCADE, null=True)

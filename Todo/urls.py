@@ -10,4 +10,5 @@ urlpatterns = [
     path('rejalar/', rejalar),
     path('edit/', edit),
     path('logout/', logout_view),
+    path('reja_ochir/<int:son>/', reja_ochir),
 ]

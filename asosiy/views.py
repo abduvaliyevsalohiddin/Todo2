@@ -40,5 +40,11 @@ def logout_view(requests):
     return redirect("/")
 
 
+def reja_ochir(request, son):
+    if Reja.objects.filter(egasi=request.user):
+        Reja.objects.get(id=son).delete()
+    return redirect("/rejalar/")
+
+
 def edit(requests):
     return render(requests, "edit.html")
