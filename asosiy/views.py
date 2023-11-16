@@ -23,7 +23,7 @@ def rejalar(request):
 
 
 def login_view(request):
-    if request.method == 'POST':
+    if request.method == 'POST' and request.POST.get("forma") == "f2":
         user = authenticate(
             username=request.POST.get("l"),
             password=request.POST.get("p")
@@ -32,7 +32,16 @@ def login_view(request):
             return redirect("/")
         login(request, user)
         return redirect("/rejalar/")
-    return render(request, "login.html")
+    elif request.method == 'POST' and request.POST.get("forma") == "f1":
+        try:
+            User.objects.create_user(
+                username=request.POST.get("l"),
+                password=request.POST.get("p1"),
+                email=request.POST.get("email"),
+            )
+        finally:
+            return redirect("/")
+    return render(request, "register.html")
 
 
 def logout_view(request):
@@ -48,3 +57,7 @@ def reja_ochir(request, son):
 
 def edit(request):
     return render(request, "edit.html")
+
+
+def register(request):
+    return render(request, "register.html")
